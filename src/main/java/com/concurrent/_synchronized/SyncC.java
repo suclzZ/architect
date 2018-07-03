@@ -1,5 +1,7 @@
 package com.concurrent._synchronized;
 
+import java.util.concurrent.TimeUnit;
+
 /**
  *同步模块加锁，其他线程拿到指定对象/类锁才行
  * synchronized修饰的对象、列对应实例方法/静态方法
