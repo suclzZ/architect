@@ -21,7 +21,7 @@ public class _ArrayList<E> implements _List<E>{
         this.capacity = capacity;
     }
 
-    public void dilatation(int newSize){
+    public void dilatation(int newSize){//扩容规则
         if(newSize<capacity){
             arr = Arrays.copyOf(arr,capacity);
         }else if(newSize <Integer.MAX_VALUE){

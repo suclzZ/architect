@@ -26,6 +26,5 @@ public class ListTest {
 
         System.out.println(list );
         System.out.println(list.size() );
-
     }
 }
