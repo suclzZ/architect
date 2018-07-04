@@ -23,4 +23,17 @@ public interface  _Map<K,V> {
     Collection<V> values();
 
 
+    interface _Entry<K,V>{
+
+        K getKey();
+
+        V getValue();
+
+        V setValue(V value);
+
+        boolean equal(Object o);
+
+        int hashCode();
+
+    }
 }
