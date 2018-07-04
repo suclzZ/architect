@@ -83,7 +83,7 @@ public class _HashMap<K,V> implements _Map<K,V>{
     }
 
     private _Node<K,V> newNode(int hash, K k, V v, _Node next) {
-        return new _Node<>(hash,k,v,next);
+        return new _Node<K,V>(hash,k,v,next);
     }
 
     private _Node[] resize() {
