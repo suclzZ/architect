@@ -6,7 +6,7 @@ import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 
-public class _CAS {
+public class _Unsafe {
 
     private Unsafe unsafe;
 
@@ -52,13 +52,13 @@ public class _CAS {
     /**
      * 通过构造器获取
      */
-    public _CAS(){
+    public _Unsafe(){
 
     }
 
     public static void main(String[] args) {
-        _CAS cas = new _CAS();
-        Unsafe unsafe = cas.getUnsafe();
+        _Unsafe _unsafe = new _Unsafe();
+        Unsafe unsafe = _unsafe.getUnsafe();
         System.out.println(unsafe);
     }
 }

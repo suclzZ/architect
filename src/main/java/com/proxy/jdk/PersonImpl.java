@@ -1,4 +1,4 @@
-package com.basic.proxy.jdk;
+package com.proxy.jdk;
 
 public class PersonImpl implements Person{
 

@@ -1,4 +1,4 @@
-package com.basic.proxy.cglib;
+package com.proxy.cglib;
 
 public class Dog {
 

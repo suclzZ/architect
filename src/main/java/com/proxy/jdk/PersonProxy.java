@@ -1,9 +1,8 @@
-package com.basic.proxy.jdk;
+package com.proxy.jdk;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
-import java.lang.reflect.Type;
 
 public class PersonProxy<T> implements InvocationHandler {
 
