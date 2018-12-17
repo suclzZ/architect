@@ -14,12 +14,14 @@ import java.util.concurrent.TimeoutException;
  */
 public class Receiver {
 
+    public static Channel channel;
+
     public static void send() throws IOException, TimeoutException {
         ConnectionFactory connectionFactory = new ConnectionFactory();
         Connection connection = connectionFactory.newConnection();
 
-        Channel channel = connection.createChannel();
-        channel.confirmSelect();
+        channel = connection.createChannel();
+//        channel.confirmSelect();
 
         //开启消息持久化
         channel.queueDeclare("q.confirm",true,false,false,null);
@@ -34,11 +36,14 @@ public class Receiver {
                 long status = envelope.getDeliveryTag()%3;//模拟多状态
                 System.out.println("ack状态："+status);
                 if(status == 0){
+                    System.out.println("basicAck");
                     channel.basicAck(envelope.getDeliveryTag(),false);
                 }else if(status == 1){
-                    channel.basicNack(envelope.getDeliveryTag(),false,true);
+                    System.out.println("basicNack");
+                    channel.basicNack(envelope.getDeliveryTag(),false,false);
                 }else if(status ==2){
                    // unacked
+                    System.out.println("non");
                 }
                 try {
                     TimeUnit.SECONDS.sleep(1);

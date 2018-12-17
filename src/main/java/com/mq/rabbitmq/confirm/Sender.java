@@ -17,7 +17,11 @@ public class Sender {
         try {
             ConnectionFactory connectionFactory = new ConnectionFactory();
             Connection connection = connectionFactory.newConnection();
-            Channel channel = connection.createChannel();
+
+            Channel channel = null;//Receiver.channel;
+            if(channel == null){
+                channel = connection.createChannel();
+            }
 
             channel.queueDeclare("q.confirm",true,false,false,null);
             channel.exchangeDeclare("exchange.confirm","topic");
@@ -37,12 +41,13 @@ public class Sender {
             });
 
             int i = 0;
-            while (i++<10){
+            while (i++<100){
                 try {
                     String message = "hello rabbitMq confirm  id:" + UUID.randomUUID().toString();
                     System.out.println("发送消息..." + message);
-                    channel.basicPublish("exchange.confirm","q.confirm",false,MessageProperties.PERSISTENT_TEXT_PLAIN,message.getBytes());
-//                    if(!channel.waitForConfirms(1000*3)){//指定时间内没有应答
+                    //MessageProperties.PERSISTENT_TEXT_PLAIN
+                    channel.basicPublish("exchange.confirm","q.confirm",false,null,message.getBytes());
+//                    if(!channel.waitForConfirms(1000*2)){//指定时间内没有应答
 //                        System.out.println("失败..." + new Date());
 //                    }
                     TimeUnit.SECONDS.sleep(1);
